@@ -15,32 +15,32 @@ import java.util.ArrayList;
  * Created by Jordi on 24/07/2017.
  */
 
-public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.MascotaViewHolder> {
+public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalViewHolder> {
     ArrayList <Animal> animalsArrayList;
     Activity activity;
 
-    public MascotaAdaptador(ArrayList<Animal> animalsArrayList, Activity activity) {
+    public AnimalAdapter(ArrayList<Animal> animalsArrayList, Activity activity) {
         this.animalsArrayList = animalsArrayList;
         this.activity = activity;
     }
 
     @Override
-    public MascotaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_mascota,parent,false);
-        return new MascotaViewHolder(view);
+    public AnimalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.CardviewAnimal,parent,false);
+        return new AnimalViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(MascotaViewHolder holder, int position) {
-        final Animal mascota = animalsArrayList.get(position);
-        holder.photo.setImageResource(mascota.getPhoto());
-        holder.name.setText(mascota.getName());
-        holder.ranking.setText(mascota.getRanking());
+    public void onBindViewHolder(AnimalViewHolder holder, int position) {
+        final Animal animal = animalsArrayList.get(position);
+        holder.photo.setImageResource(animal.getPhoto());
+        holder.name.setText(animal.getName());
+        holder.ranking.setText(animal.getRanking());
 
         holder.bone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(activity,"Diste like a " + mascota.getName(),Toast.LENGTH_LONG).show();
+                Toast.makeText(activity,"Diste like a " + animal.getName(),Toast.LENGTH_LONG).show();
             }
         });
 
@@ -54,13 +54,13 @@ public class MascotaAdaptador extends RecyclerView.Adapter<MascotaAdaptador.Masc
         return animalsArrayList.size();
     }
 
-    public static class MascotaViewHolder extends RecyclerView.ViewHolder{
+    public static class AnimalViewHolder extends RecyclerView.ViewHolder{
         private ImageView photo;
         private TextView name;
         private TextView ranking;
         private ImageView bone;
 
-        public MascotaViewHolder(View itemView) {
+        public AnimalViewHolder(View itemView) {
             super(itemView);
             photo = (ImageView) itemView.findViewById(R.id.imgFoto);
             name = (TextView) itemView.findViewById(R.id.nombreCV);

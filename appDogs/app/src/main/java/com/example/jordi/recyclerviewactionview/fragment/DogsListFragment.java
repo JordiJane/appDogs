@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.jordi.recyclerviewactionview.Animal;
-import com.example.jordi.recyclerviewactionview.MascotaAdaptador;
+import com.example.jordi.recyclerviewactionview.AnimalAdapter;
 import com.example.jordi.recyclerviewactionview.R;
 
 import java.util.ArrayList;
@@ -22,28 +22,28 @@ public class DogsListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_dogs_list,container,false);
+        View view = inflater.inflate(R.layout.FragmentDogsList,container,false);
 
-        listAnimals = (RecyclerView) v.findViewById(R.id.RVmascotas);
-        generarLinearLayoutVertical();
-        inicializarListaMascotas();
-        inicializarAdaptador();
+        listAnimals = (RecyclerView) view.findViewById(R.id.RVmascotas);
+        generateLinearLayoutVertical();
+        initializeListAnimals();
+        initializeAdapter();
 
         // Inflate the layout for this fragment
-        return v;
+        return view;
     }
 
-    public void generarLinearLayoutVertical() {
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        listAnimals.setLayoutManager(llm);
+    public void generateLinearLayoutVertical() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        listAnimals.setLayoutManager(linearLayoutManager);
     }
-    public void inicializarAdaptador(){
-        MascotaAdaptador adaptador = new MascotaAdaptador(animal,getActivity());
-        listAnimals.setAdapter(adaptador);
+    public void initializeAdapter(){
+        AnimalAdapter adapter = new AnimalAdapter(animal,getActivity());
+        listAnimals.setAdapter(adapter);
     }
 
-    public void inicializarListaMascotas(){
+    public void initializeListAnimals(){
         animal = new ArrayList<Animal>();
 
         animal.add(new Animal(R.drawable.perroicono,"Perry","2"));

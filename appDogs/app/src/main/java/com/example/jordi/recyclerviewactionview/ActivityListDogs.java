@@ -17,18 +17,18 @@ public class ActivityListDogs extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.MainActivity);
 
         animalsList = (RecyclerView) findViewById(R.id.RVmascotas);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        animalsList.setLayoutManager(llm);
-        inicializarListaMascotas();
-        inicializarAdaptador();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        animalsList.setLayoutManager(linearLayoutManager);
+        initializeListAnimals();
+        initializeAdapter();
 
     }
 
-    private ArrayList<Fragment> agregarFragment(){
+    private ArrayList<Fragment> addFragment(){
         ArrayList<Fragment> fragments = new ArrayList<>();
 
         return fragments;
@@ -61,12 +61,12 @@ public class ActivityListDogs extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void inicializarAdaptador(){
-        MascotaAdaptador adapter = new MascotaAdaptador(animals,this);
+    public void initializeAdapter(){
+        AnimalAdapter adapter = new AnimalAdapter(animals,this);
         animalsList.setAdapter(adapter);
     }
 
-    public void inicializarListaMascotas(){
+    public void initializeListAnimals(){
         animals = new ArrayList<Animal>();
 
         animals.add(new Animal(R.drawable.perroicono,"Perry","2"));

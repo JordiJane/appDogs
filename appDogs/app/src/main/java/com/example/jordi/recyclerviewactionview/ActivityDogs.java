@@ -13,7 +13,7 @@ public class ActivityDogs extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.ActivityDogs);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -25,7 +25,7 @@ public class ActivityDogs extends AppCompatActivity {
         inicializarAdaptador();
     }
     public void inicializarAdaptador(){
-        MascotaAdaptador adapter = new MascotaAdaptador(animals,this);
+        AnimalAdapter adapter = new AnimalAdapter(animals,this);
         animalsList.setAdapter(adapter);
     }
 
